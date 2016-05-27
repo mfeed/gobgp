@@ -1337,8 +1337,8 @@ func (lhs *PeerGroup) Equal(rhs *PeerGroup) bool {
 	}
 	{
 		lmap := make(map[string]*AfiSafi)
-		for _, l := range lhs.AfiSafis {
-			lmap[string(l.Config.AfiSafiName)] = &l
+		for i, l := range lhs.AfiSafis {
+			lmap[string(l.Config.AfiSafiName)] = &lhs.AfiSafis[i]
 		}
 		for _, r := range rhs.AfiSafis {
 			if l, y := lmap[string(r.Config.AfiSafiName)]; !y {
@@ -2423,8 +2423,8 @@ func (lhs *Neighbor) Equal(rhs *Neighbor) bool {
 	}
 	{
 		lmap := make(map[string]*AfiSafi)
-		for _, l := range lhs.AfiSafis {
-			lmap[string(l.Config.AfiSafiName)] = &l
+		for i, l := range lhs.AfiSafis {
+			lmap[string(l.Config.AfiSafiName)] = &lhs.AfiSafis[i]
 		}
 		for _, r := range rhs.AfiSafis {
 			if l, y := lmap[string(r.Config.AfiSafiName)]; !y {
@@ -3914,8 +3914,8 @@ func (lhs *Global) Equal(rhs *Global) bool {
 	}
 	{
 		lmap := make(map[string]*AfiSafi)
-		for _, l := range lhs.AfiSafis {
-			lmap[string(l.Config.AfiSafiName)] = &l
+		for i, l := range lhs.AfiSafis {
+			lmap[string(l.Config.AfiSafiName)] = &lhs.AfiSafis[i]
 		}
 		for _, r := range rhs.AfiSafis {
 			if l, y := lmap[string(r.Config.AfiSafiName)]; !y {
@@ -3965,8 +3965,8 @@ func (lhs *Bgp) Equal(rhs *Bgp) bool {
 	}
 	{
 		lmap := make(map[string]*Neighbor)
-		for _, l := range lhs.Neighbors {
-			lmap[string(l.Config.NeighborAddress)] = &l
+		for i, l := range lhs.Neighbors {
+			lmap[string(l.Config.NeighborAddress)] = &lhs.Neighbors[i]
 		}
 		for _, r := range rhs.Neighbors {
 			if l, y := lmap[string(r.Config.NeighborAddress)]; !y {
@@ -3981,8 +3981,8 @@ func (lhs *Bgp) Equal(rhs *Bgp) bool {
 	}
 	{
 		lmap := make(map[string]*PeerGroup)
-		for _, l := range lhs.PeerGroups {
-			lmap[string(l.Config.PeerGroupName)] = &l
+		for i, l := range lhs.PeerGroups {
+			lmap[string(l.Config.PeerGroupName)] = &lhs.PeerGroups[i]
 		}
 		for _, r := range rhs.PeerGroups {
 			if l, y := lmap[string(r.Config.PeerGroupName)]; !y {
@@ -3997,8 +3997,8 @@ func (lhs *Bgp) Equal(rhs *Bgp) bool {
 	}
 	{
 		lmap := make(map[string]*RpkiServer)
-		for _, l := range lhs.RpkiServers {
-			lmap[string(l.Config.Address)] = &l
+		for i, l := range lhs.RpkiServers {
+			lmap[string(l.Config.Address)] = &lhs.RpkiServers[i]
 		}
 		for _, r := range rhs.RpkiServers {
 			if l, y := lmap[string(r.Config.Address)]; !y {
@@ -4013,8 +4013,8 @@ func (lhs *Bgp) Equal(rhs *Bgp) bool {
 	}
 	{
 		lmap := make(map[string]*BmpServer)
-		for _, l := range lhs.BmpServers {
-			lmap[string(l.Config.Address)] = &l
+		for i, l := range lhs.BmpServers {
+			lmap[string(l.Config.Address)] = &lhs.BmpServers[i]
 		}
 		for _, r := range rhs.BmpServers {
 			if l, y := lmap[string(r.Config.Address)]; !y {
@@ -4029,8 +4029,8 @@ func (lhs *Bgp) Equal(rhs *Bgp) bool {
 	}
 	{
 		lmap := make(map[string]*Mrt)
-		for _, l := range lhs.MrtDump {
-			lmap[string(l.FileName)] = &l
+		for i, l := range lhs.MrtDump {
+			lmap[string(l.FileName)] = &lhs.MrtDump[i]
 		}
 		for _, r := range rhs.MrtDump {
 			if l, y := lmap[string(r.FileName)]; !y {
@@ -4627,8 +4627,8 @@ func (lhs *PolicyDefinition) Equal(rhs *PolicyDefinition) bool {
 	}
 	{
 		lmap := make(map[string]*Statement)
-		for _, l := range lhs.Statements {
-			lmap[string(l.Name)] = &l
+		for i, l := range lhs.Statements {
+			lmap[string(l.Name)] = &lhs.Statements[i]
 		}
 		for _, r := range rhs.Statements {
 			if l, y := lmap[string(r.Name)]; !y {
@@ -4738,8 +4738,8 @@ func (lhs *BgpDefinedSets) Equal(rhs *BgpDefinedSets) bool {
 	}
 	{
 		lmap := make(map[string]*CommunitySet)
-		for _, l := range lhs.CommunitySets {
-			lmap[string(l.CommunitySetName)] = &l
+		for i, l := range lhs.CommunitySets {
+			lmap[string(l.CommunitySetName)] = &lhs.CommunitySets[i]
 		}
 		for _, r := range rhs.CommunitySets {
 			if l, y := lmap[string(r.CommunitySetName)]; !y {
@@ -4754,8 +4754,8 @@ func (lhs *BgpDefinedSets) Equal(rhs *BgpDefinedSets) bool {
 	}
 	{
 		lmap := make(map[string]*ExtCommunitySet)
-		for _, l := range lhs.ExtCommunitySets {
-			lmap[string(l.ExtCommunitySetName)] = &l
+		for i, l := range lhs.ExtCommunitySets {
+			lmap[string(l.ExtCommunitySetName)] = &lhs.ExtCommunitySets[i]
 		}
 		for _, r := range rhs.ExtCommunitySets {
 			if l, y := lmap[string(r.ExtCommunitySetName)]; !y {
@@ -4770,8 +4770,8 @@ func (lhs *BgpDefinedSets) Equal(rhs *BgpDefinedSets) bool {
 	}
 	{
 		lmap := make(map[string]*AsPathSet)
-		for _, l := range lhs.AsPathSets {
-			lmap[string(l.AsPathSetName)] = &l
+		for i, l := range lhs.AsPathSets {
+			lmap[string(l.AsPathSetName)] = &lhs.AsPathSets[i]
 		}
 		for _, r := range rhs.AsPathSets {
 			if l, y := lmap[string(r.AsPathSetName)]; !y {
@@ -4820,8 +4820,8 @@ func (lhs *TagSet) Equal(rhs *TagSet) bool {
 	}
 	{
 		lmap := make(map[string]*Tag)
-		for _, l := range lhs.TagList {
-			lmap[string(l.Value)] = &l
+		for i, l := range lhs.TagList {
+			lmap[string(l.Value)] = &lhs.TagList[i]
 		}
 		for _, r := range rhs.TagList {
 			if l, y := lmap[string(r.Value)]; !y {
@@ -4903,8 +4903,8 @@ func (lhs *PrefixSet) Equal(rhs *PrefixSet) bool {
 	}
 	{
 		lmap := make(map[string]*Prefix)
-		for _, l := range lhs.PrefixList {
-			lmap[string(l.IpPrefix+l.MasklengthRange)] = &l
+		for i, l := range lhs.PrefixList {
+			lmap[string(l.IpPrefix+l.MasklengthRange)] = &lhs.PrefixList[i]
 		}
 		for _, r := range rhs.PrefixList {
 			if l, y := lmap[string(r.IpPrefix+r.MasklengthRange)]; !y {
@@ -4938,8 +4938,8 @@ func (lhs *DefinedSets) Equal(rhs *DefinedSets) bool {
 	}
 	{
 		lmap := make(map[string]*PrefixSet)
-		for _, l := range lhs.PrefixSets {
-			lmap[string(l.PrefixSetName)] = &l
+		for i, l := range lhs.PrefixSets {
+			lmap[string(l.PrefixSetName)] = &lhs.PrefixSets[i]
 		}
 		for _, r := range rhs.PrefixSets {
 			if l, y := lmap[string(r.PrefixSetName)]; !y {
@@ -4954,8 +4954,8 @@ func (lhs *DefinedSets) Equal(rhs *DefinedSets) bool {
 	}
 	{
 		lmap := make(map[string]*NeighborSet)
-		for _, l := range lhs.NeighborSets {
-			lmap[string(l.NeighborSetName)] = &l
+		for i, l := range lhs.NeighborSets {
+			lmap[string(l.NeighborSetName)] = &lhs.NeighborSets[i]
 		}
 		for _, r := range rhs.NeighborSets {
 			if l, y := lmap[string(r.NeighborSetName)]; !y {
@@ -4970,8 +4970,8 @@ func (lhs *DefinedSets) Equal(rhs *DefinedSets) bool {
 	}
 	{
 		lmap := make(map[string]*TagSet)
-		for _, l := range lhs.TagSets {
-			lmap[string(l.TagSetName)] = &l
+		for i, l := range lhs.TagSets {
+			lmap[string(l.TagSetName)] = &lhs.TagSets[i]
 		}
 		for _, r := range rhs.TagSets {
 			if l, y := lmap[string(r.TagSetName)]; !y {
@@ -5007,8 +5007,8 @@ func (lhs *RoutingPolicy) Equal(rhs *RoutingPolicy) bool {
 	}
 	{
 		lmap := make(map[string]*PolicyDefinition)
-		for _, l := range lhs.PolicyDefinitions {
-			lmap[string(l.Name)] = &l
+		for i, l := range lhs.PolicyDefinitions {
+			lmap[string(l.Name)] = &lhs.PolicyDefinitions[i]
 		}
 		for _, r := range rhs.PolicyDefinitions {
 			if l, y := lmap[string(r.Name)]; !y {
