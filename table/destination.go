@@ -252,8 +252,26 @@ func (dest *Destination) Calculate(ids []string) (map[string]*Path, []*Path) {
 			}
 			return nil
 		}()
+		equal := func(lhs, rhs *Path) bool {
+			// already know the NLRIs are same and
+			// timestamp must be ignored so check out only
+			// source.
+			if lhs.GetSource() != rhs.GetSource() {
+				return false
+			}
+
+			pattrs := func(arg []bgp.PathAttributeInterface) []byte {
+				ret := make([]byte, 0)
+				for _, a := range arg {
+					aa, _ := a.Serialize()
+					ret = append(ret, aa...)
+				}
+				return ret
+			}
+			return bytes.Equal(pattrs(lhs.GetPathAttrs()), pattrs(rhs.GetPathAttrs()))
+		}
 		best := dest.GetBestPath(id)
-		if best != nil && best.Equal(old) {
+		if best != nil && old != nil && equal(best, old) {
 			return nil
 		}
 		if best == nil {
