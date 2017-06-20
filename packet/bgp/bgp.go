@@ -774,8 +774,9 @@ func DecodeCapability(data []byte) (ParameterCapabilityInterface, error) {
 		c = &CapGracefulRestart{}
 	case BGP_CAP_FOUR_OCTET_AS_NUMBER:
 		c = &CapFourOctetASNumber{}
-	case BGP_CAP_ADD_PATH:
-		c = &CapAddPath{}
+//  Commentout to ignore ADD_PATH Capability
+//	case BGP_CAP_ADD_PATH:
+//		c = &CapAddPath{}
 	case BGP_CAP_ENHANCED_ROUTE_REFRESH:
 		c = &CapEnhancedRouteRefresh{}
 	case BGP_CAP_ROUTE_REFRESH_CISCO:
