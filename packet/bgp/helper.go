@@ -30,10 +30,8 @@ func NewTestBGPOpenMessage() *BGPMessage {
 			[]*CapGracefulRestartTuple{g})})
 	p4 := NewOptionParameterCapability(
 		[]ParameterCapabilityInterface{NewCapFourOctetASNumber(100000)})
-	p5 := NewOptionParameterCapability(
-		[]ParameterCapabilityInterface{NewCapAddPath(RF_IPv4_UC, BGP_ADD_PATH_BOTH)})
 	return NewBGPOpenMessage(11033, 303, "100.4.10.3",
-		[]OptionParameterInterface{p1, p2, p3, p4, p5})
+		[]OptionParameterInterface{p1, p2, p3, p4})
 }
 
 func NewTestBGPUpdateMessage() *BGPMessage {
@@ -78,16 +76,16 @@ func NewTestBGPUpdateMessage() *BGPMessage {
 	}
 
 	mp_nlri := []AddrPrefixInterface{
-		NewLabeledVPNIPAddrPrefix(20, "192.0.9.0", *NewMPLSLabelStack(1, 2, 3),
+		NewLabeledVPNIPAddrPrefix(24, "192.0.9.0", *NewMPLSLabelStack(1, 2, 3),
 			NewRouteDistinguisherTwoOctetAS(256, 10000)),
-		NewLabeledVPNIPAddrPrefix(26, "192.10.8.192", *NewMPLSLabelStack(5, 6, 7, 8),
+		NewLabeledVPNIPAddrPrefix(24, "192.10.8.0", *NewMPLSLabelStack(5, 6, 7, 8),
 			NewRouteDistinguisherIPAddressAS("10.0.1.1", 10001)),
 	}
 
-	mp_nlri2 := []AddrPrefixInterface{NewIPv6AddrPrefix(100,
+	mp_nlri2 := []AddrPrefixInterface{NewIPv6AddrPrefix(128,
 		"fe80:1234:1234:5667:8967:af12:8912:1023")}
 
-	mp_nlri3 := []AddrPrefixInterface{NewLabeledVPNIPv6AddrPrefix(100,
+	mp_nlri3 := []AddrPrefixInterface{NewLabeledVPNIPv6AddrPrefix(128,
 		"fe80:1234:1234:5667:8967:af12:1203:33a1", *NewMPLSLabelStack(5, 6),
 		NewRouteDistinguisherFourOctetAS(5, 6))}
 
